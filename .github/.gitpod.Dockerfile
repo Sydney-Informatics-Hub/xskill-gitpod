@@ -35,6 +35,9 @@ RUN curl -s https://get.nextflow.io | bash && \
 RUN mkdir -p /home/gitpod/.nextflow && \
 chown -R gitpod:gitpod /home/gitpod/.nextflow
 
+# Set the working directory to the project directory
+WORKDIR /workspace/hello-nextflow
+
 # Change user back to gitpod to avoid running as root
 USER gitpod
 
