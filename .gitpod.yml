@@ -1,0 +1,59 @@
+# Custom workspace and checkout locations
+workspaceLocation: gitpod/gitpod.code-workspace  # Refers to the .code-workspace file
+checkoutLocation: gitpod  # Ensures Git clones into the specified directory
+
+# GitHub prebuild configuration
+github:
+  prebuilds:
+    master: true         # Enable prebuilds for the main branch
+    branches: true       # Enable for all branches (optional)
+    pullRequests: true   # Enable prebuilds for PRs from this repository
+    pullRequestsFromForks: true  # Enable prebuilds for PRs from forks
+    addComment: false    # Disable "Review in Gitpod" comments on PRs
+    addBadge: false      # Disable "Review in Gitpod" badges on PRs
+
+# Docker image to use for the workspace
+image:
+  file: .gitpod.Dockerfile
+
+# Tasks to execute during workspace initialisation and startup
+tasks:
+  - before: printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc || true
+
+  # Create directory structure
+  - name: Create Directories
+    init: mkdir -p /workspace/hello-nextflow/{part1,part2}
+
+  # Download containers to be used in part 2
+  - name: Download Containers
+    init: |
+      docker pull quay.io/biocontainers/salmon:1.10.1--h7e5ed60_0 || true
+      docker pull quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0 || true
+      docker pull quay.io/biocontainers/multiqc:1.19--pyhdfd78af_0 || true
+    command: docker run hello-world
+
+  # Open docs in a web browser
+  - name: Open Workshop Page
+    command: gp await-port 23000 && gp preview https://sydney-informatics-hub.github.io/hello-nextflow/
+
+  # Start the tutorial
+  - name: Start Tutorial
+    command: |
+      cd hello-nextflow
+      source $HOME/.bashrc
+      unset JAVA_TOOL_OPTIONS
+      clear
+
+# VSCode extensions to install in the workspace
+vscode:
+  extensions:
+    - codezombiech.gitignore           # Support for .gitignore files
+    - cssho.vscode-svgviewer           # SVG viewer for image previews
+    - esbenp.prettier-vscode           # Prettier for code and Markdown formatting
+    - nextflow.nextflow                # Syntax highlighting for Nextflow scripts
+    - streetsidesoftware.code-spell-checker # Spell checker for source code
+    - ms-vscode.live-server            # Live server for serving web content
+
+  files:
+    open:
+      - /workspace/hello-nextflow  # Opens the correct directory in the explorer
