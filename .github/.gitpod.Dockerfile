@@ -30,13 +30,16 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
 RUN curl -s https://get.nextflow.io | bash && \
   chmod 755 ./nextflow && \
   mv ./nextflow /usr/local/bin
-
+  
 # Create .nextflow directory and set proper permissions
 RUN mkdir -p /home/gitpod/.nextflow && \
 chown -R gitpod:gitpod /home/gitpod/.nextflow
+
+RUN mkdir -p /workspace/data \
+    && chown -R gitpod:gitpod /workspace/data
 
 # Change user back to gitpod to avoid running as root
 USER gitpod
 
 # Set the entrypoint ensuring when the container starts it uses a bash shell
-ENTRYPOINT ["/bin/bash"]
+#ENTRYPOINT ["/bin/bash"]
