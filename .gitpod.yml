@@ -22,7 +22,7 @@ tasks:
 
   # Create directory structure
   - name: Create Directories
-    init: mkdir -p /workspace/hello-nextflow/{part1,part2}
+    init: mkdir -p /workspace/hello-nextflow/part1
 
   # Download containers to be used in part 2
   - name: Download Containers
