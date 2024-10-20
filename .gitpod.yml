@@ -1,0 +1,33 @@
+# Specify the Dockerfile to build the workspace environment
+image:
+  file: .gitpod.Dockerfile
+
+# Prebuild configuration to speed up workspace launches
+github:
+  prebuilds:
+    master: true            # Enable prebuilds for the master branch
+    branches: true          # Enable prebuilds for all branches
+    pullRequests: true      # Enable prebuilds for pull requests
+    pullRequestsFromForks: true  # Enable prebuilds for PRs from forks
+    addComment: false       # Disable "Review in Gitpod" comment
+    addBadge: false         # Disable the Gitpod badge on PRs
+
+# Tasks to run during workspace initialisation
+tasks:
+  - name: Initialize Dev Environment
+    init: |
+      ./init.dev.sh  # Run the script to set up the development environment
+    command: python setup.py develop  # Install the project in development mode
+
+# VSCode extensions for the workspace
+vscode:
+  extensions:
+    - ms-python.python           # Python language support
+    - ms-toolsai.jupyter          # Jupyter notebook integration
+    - eamodio.gitlens             # Enhanced Git support
+    - streetsidesoftware.code-spell-checker  # Spell checker for code
+
+# Configure the workspace to open the project folder and relevant files
+files:
+  open:
+    - /workspace/juxtorpus
