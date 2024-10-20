@@ -32,11 +32,8 @@ RUN curl -s https://get.nextflow.io | bash && \
   mv ./nextflow /usr/local/bin
   
 # Create .nextflow directory and set proper permissions
-RUN mkdir -p /home/gitpod/.nextflow && \
-chown -R gitpod:gitpod /home/gitpod/.nextflow
-
-RUN mkdir -p /workspace/data \
-    && chown -R gitpod:gitpod /workspace/data
+RUN mkdir -p /workspace/hello-nextflow/.nextflow && \
+chown -R gitpod:gitpod /workspace/hello-nextflow/.nextflow
 
 # Change user back to gitpod to avoid running as root
 USER gitpod
