@@ -1,8 +1,7 @@
 {
   "folders": [
-    {
-      "path": "."  // Opens the correct directory in the explorer
-    }
+    { "path": "/workspace/hello-nextflow/part1" },
+    { "path": "/workspace/hello-nextflow/part2" },
   ],
   "settings": {
     "editor.tabSize": 2,
