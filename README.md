@@ -5,7 +5,7 @@ This branch contains an interactive tutorial using Gitpod. Follow the steps belo
 ## How to Use
 
 1. Open this branch in Gitpod: 
-   [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Sydney-Informatics-Hub/xskill-gitpod)
+   [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Sydney-Informatics-Hub/xskill-gitpod/tree/hello-nextflow)
 
 2. Wait for the containers to download and the environment to set up.
 
